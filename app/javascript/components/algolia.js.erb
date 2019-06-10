@@ -1,0 +1,28 @@
+function algolia () {
+
+  // var envAppId = "<%= ENV['ALGOLIA_ID'] %>";
+  // var envApiKey = "<%= ENV['ALGOLIA_AP_KEY'] %>";
+  var envAppId = "pl2WBQ5IQ5YB";
+  var envApiKey = "32f513307ec1b6927f0ad3fc3cfff192";
+
+  var placesAutocomplete = places({
+    appId: envAppId,
+    apiKey: envApiKey,
+ container: document.querySelector('#form-address'),
+ // style: false,
+    templates: {
+      value: function(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: 'address'
+  });
+  placesAutocomplete.on('change', function resultSelected(e) {
+    document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+    document.querySelector('#form-city').value = e.suggestion.city || '';
+    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+  });
+};
+
+algolia()
