@@ -1,0 +1,286 @@
+
+var MyWidgetJS = {
+  getScript: function(url, success) {
+    var done, head, script;
+    script = document.createElement('script');
+    script.src = url;
+    head = document.getElementsByTagName('head')[0];
+    done = false;
+    script.onload = script.onreadystatechange = function() {
+      if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+        done = true;
+        success();
+        script.onload = script.onreadystatechange = null;
+        return head.removeChild(script);
+      }
+    };
+    return head.appendChild(script);
+  },
+  load: function() {
+    var $elem, $iframe;
+    $elem = $('#my-widget');
+    var url = "<%= widget_url %>";
+    if ($elem.length > 0) {
+      $elem.empty();
+      $iframe = $('<iframe>').attr('src',  url)
+                             .attr('frameborder', '0')
+                             .attr('id', 'widget-iframe')
+                             .attr('allowtransparency', 'true');
+      return $elem.append($iframe);
+    }
+  },
+};
+if (typeof jQuery === 'undefined') {
+  MyWidgetJS.getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function() {
+    return MyWidgetJS.load();
+  });
+} else {
+  MyWidgetJS.load();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var MyWidgetJS = {
+//   getScript: function(url, success) {
+//     var done, head, script;
+//     script = document.createElement('script');
+//     script.src = url;
+//     head = document.getElementsByTagName('head')[0];
+//     done = false;
+//     script.onload = script.onreadystatechange = function() {
+//       if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+//         done = true;
+//         success();
+//         script.onload = script.onreadystatechange = null;
+//         return head.removeChild(script);
+//       }
+//     };
+//     //console.log(script.src);
+//     return head.appendChild(script);
+//   },
+//   load: function() {
+//     var $elem, $iframe, $form;
+//     $elem = $('#my-widget');
+//     var url = "<%= widget_url %>";
+//     if ($elem.length > 0) {
+//       $elem.empty();
+//       $iframe = $('<iframe>').attr('src',  url)
+//                              .attr('frameborder', '0')
+//                              .attr('id', 'widget-iframe')
+//                              .attr('allowtransparency', 'true');
+//       return $elem.append($iframe);
+//     }
+//   },
+//   algolia: function () {
+// // var a = $("#widget-iframe").contents().find("#form-address");
+// //  var b = document.querySelector('input')
+// var frame = document.getElementById('widget-iframe');
+// console.log(frame);
+// // var frame_2 = frame.contentDocument || frame.contentWindow.document;
+// // console.log(frame_2);
+// // var document = frame_2
+// // var b = frame_2.getElementById('form-address');
+// // console.log(b);
+
+
+// console.log("je suis ici");
+
+//   var placesAutocomplete = places({
+//     appId: 'pl2WBQ5IQ5YB',
+//     apiKey: '32f513307ec1b6927f0ad3fc3cfff192',
+//  container: document.getElementById("widget-iframe").contentWindow.document.getElementById("form-address"),
+//  // style: false,
+//     templates: {
+//       value: function(suggestion) {
+//         return suggestion.name;
+//       }
+//     }
+//   }).configure({
+//     type: 'address'
+//   });
+//   console.log("je suis maintenant ici")
+//   placesAutocomplete.on('change', function resultSelected(e) {
+//     document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+//     document.querySelector('#form-city').value = e.suggestion.city || '';
+//     document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+//   });
+// },
+// };
+// if (typeof jQuery === 'undefined') {
+//   MyWidgetJS.getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function() {
+//     return MyWidgetJS.load();
+//   });
+//    MyWidgetJS.getScript('https://cdn.jsdelivr.net/npm/places.js@1.16.4', function() {
+//     return MyWidgetJS.algolia();
+//   });
+// } else {
+//   MyWidgetJS.load();
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// (function() {
+
+// // Localize jQuery variable
+// var jQuery;
+
+// /******** Load jQuery if not present *********/
+// if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.8.3') {
+//     var script_tag = document.createElement('script');
+//     script_tag.setAttribute("type","text/javascript");
+//     script_tag.setAttribute("src",
+//         "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js");
+//     var script_tag1 = document.createElement('script');
+//     script_tag1.setAttribute("type","text/javascript");
+//     script_tag1.setAttribute("src",
+//         "https://cdn.jsdelivr.net/npm/places.js@1.16.4");
+
+//     if (script_tag.readyState) {
+//       script_tag.onreadystatechange = function () { // For old versions of IE
+//           if (this.readyState == 'complete' || this.readyState == 'loaded') {
+//               scriptLoadHandler();
+//           }
+//       };
+//     } else { // Other browsers
+//       script_tag.onload = scriptLoadHandler;
+//     }
+//     // Try to find the head, otherwise default to the documentElement
+//     (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+//     (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag1);
+// } else {
+//     // The jQuery version on the window is the one we want to use
+//     jQuery = window.jQuery;
+//     main();
+// }
+
+// /******** Called once jQuery has loaded ******/
+// function scriptLoadHandler() {
+//     // Restore $ and window.jQuery to their previous values and store the
+//     // new jQuery in our local jQuery variable
+//     jQuery = window.jQuery.noConflict(true);
+//     // Call our main function
+//     main();
+// }
+
+// /******** Our main function ********/
+// function main() {
+//     jQuery(document).ready(function($) {
+//     /******* Load CSS *******/
+//     var css_link = $("<link>", {
+//             rel: "stylesheet",
+//             type: "text/css",
+//             href: "http://localhost:3000/widgets_layout"
+//         });
+//         css_link.appendTo('head');
+//         var txt;
+//         txt='<div id="wrapper">';
+//         txt=txt+'<ul class="tabs">';
+//         txt=txt+'<li id="fixtures_tab"><a href="#fixtures">Hepsi</a></li>';
+//         txt=txt+'<li id="live_tab"><a href="#live">Canlı</a></li>';
+//         txt=txt+'<li id="finished_tab"><a href="#finished">Bitmiş</a></li>';
+//         txt=txt+'<li id="program_tab"><a href="#program">Başlamamış</a></li>';
+//         txt=txt+'<li id="postpond_tab"><a href="#postpond">Ertelenen</a></li>';
+//         txt=txt+'<li id="selected_tab"><a id="f" href="#fav">Oyunlarım (0)</a></li>';
+//         txt=txt+'</ul>';
+//         txt=txt+'<div class="tab-container">';
+//         txt=txt+'<div id="fixtures" class="tab-content"><script type="text/javascript">get_All_Today_Matches();</script></div>';
+//         txt=txt+'<div id="live" class="tab-content"><script type="text/javascript"></script></div>';
+//         txt=txt+'<div id="finished" class="tab-content"><script type="text/javascript"></script></div>';
+//         txt=txt+'<div id="program" class="tab-content"><script type="text/javascript"></script></div>';
+//         txt=txt+'<div id="postpond" class="tab-content"><script type="text/javascript"></script></div>';
+//         txt=txt+'<div id="fav" class="tab-content"><script type="text/javascript"></script></div>';
+//         txt=txt+'</div>';
+//         txt=txt+'</div>';
+//         $('#widget-container').html(txt);
+//     });
+// }
+// })(); // We call our anonymous function immediately
+
+// setTimeout(function(){
+// var timer = $.timer(function() {
+//     var cha = "'";
+//     $('.show_hide').html("");
+//     setTimeout(function(){
+//         $('.show_hide').html(cha);
+//     }, 500);
+// });
+// timer.set({ time : 1000, autostart : true });
+// }, 3000);

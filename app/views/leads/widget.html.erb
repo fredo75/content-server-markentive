@@ -1,4 +1,5 @@
-<!-- <form action="/billing" class="form">
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+<form action="/leads" class="form">
   <div class="form-group">
     <label for="form-address">Address*</label>
     <input type="search" class="form-control" id="form-address" placeholder="Where do you live?" />
@@ -15,25 +16,17 @@
     <label for="form-zip">ZIP code*</label>
     <input type="text" class="form-control" id="form-zip" placeholder="ZIP code">
   </div>
+  <div>
+  <%= simple_form_for @lead do |f| %>
+  <%= f.input :first_name, required: false %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :adress %>
+  <%= f.input :adress_2 %>
+  <%= f.input :company %>
+  <%= f.button :submit %>
+<% end %>
+</div>
 </form>
+    <%= javascript_pack_tag 'application' %>
 
-<script>
-    <%#= javascript_tag "algolia()" %>
-</script> -->
-
-<!-- <script> type="text/javascript"
-
-  MySiteWidget = {};
-MySiteWidget.limit = 5;
-MySiteWidget.query = "javascript";
-
-</script>
-
-<script src="//localhost:3000/widget.js" type="text/javascript" >
-</script>
-
-<div class="mysite-widget"></div>
- -->
-
-<div id="my-widget"></div>
-<script src="http://localhost:3000/widget.js" type="text/javascript"></script>

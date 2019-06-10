@@ -3,5 +3,8 @@ Rails.application.routes.draw do
     root to: 'pages#home'
    get 'widget', to: 'widgets#widget'
    get 'test_widget', to: 'widgets#test_widget'
+
+   resources :leads
+   # , only: [ :index, :show, :edit, :update, :new, :destroy, :create ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
