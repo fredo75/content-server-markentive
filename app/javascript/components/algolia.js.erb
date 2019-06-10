@@ -8,7 +8,7 @@ function algolia () {
   var placesAutocomplete = places({
     appId: envAppId,
     apiKey: envApiKey,
- container: document.querySelector('#form-address'),
+ container: document.querySelector('#lead_address'),
  // style: false,
     templates: {
       value: function(suggestion) {
@@ -19,9 +19,9 @@ function algolia () {
     type: 'address'
   });
   placesAutocomplete.on('change', function resultSelected(e) {
-    document.querySelector('#form-address2').value = e.suggestion.administrative || '';
-    document.querySelector('#form-city').value = e.suggestion.city || '';
-    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+    document.querySelector('#lead_address_2').value = e.suggestion.administrative || '';
+    document.querySelector('#lead_city').value = e.suggestion.city || '';
+    document.querySelector('#lead_zip').value = e.suggestion.postcode || '';
   });
 };
 

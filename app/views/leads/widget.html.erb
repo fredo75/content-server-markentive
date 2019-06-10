@@ -1,10 +1,10 @@
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
-<form action="/leads" class="form">
-  <div class="form-group">
+<!-- <form action="/leads" class="form"> -->
+<!--   <div class="form-group">
     <label for="form-address">Address*</label>
     <input type="search" class="form-control" id="form-address" placeholder="Where do you live?" />
-  </div>
-  <div class="form-group">
+  </div> -->
+<!--   <div class="form-group">
     <label for="form-address2">Address 2</label>
     <input type="text" class="form-control" id="form-address2" placeholder="Street number and name" />
   </div>
@@ -15,18 +15,29 @@
   <div class="form-group">
     <label for="form-zip">ZIP code*</label>
     <input type="text" class="form-control" id="form-zip" placeholder="ZIP code">
-  </div>
-  <div>
-  <%= simple_form_for @lead do |f| %>
+  </div> -->
+
+  <%= simple_form_for @lead, html: { method: :post, class: :'form' } do |f| %>
   <%= f.input :first_name, required: false %>
   <%= f.input :last_name %>
   <%= f.input :email %>
-  <%= f.input :adress %>
-  <%= f.input :adress_2 %>
+  <div class="form-group">
+  <%= f.input :address, class:'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= f.input :address_2, class:'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= f.input :zip, class:'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= f.input :city, class:'form-control' %>
+  </div>
   <%= f.input :company %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class:'btn btn-warning' %>
+  <%= hidden_field_tag(:user_id, "1") %>
 <% end %>
-</div>
-</form>
+
+<!-- </form> -->
     <%= javascript_pack_tag 'application' %>
 
