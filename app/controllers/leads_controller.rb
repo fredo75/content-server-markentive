@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  # skip_before_action :authenticate_user!, only: [:home]
 
 def index
   @lead = Lead.new(lead_params)
@@ -38,8 +38,12 @@ end
 
 
   def create
-    @lead = Lead.new(params[:lead])
+    @lead = Lead.new(lead_params)
+    # @lead.user_id = 1
+    @lead.user_id = params[:user_id]
     @lead.save
+    raise
+
     # Unless @lead.valid?, #save will return false,
     # and @lead is not persisted.
     # TODO: present the form again with error messages.
@@ -49,6 +53,6 @@ end
   private
 
   def lead_params
-    params.require(:lead).permit(:first_name, :last_name, :address, :adress_2, :email, :zip, :company)
+    params.require(:lead).permit(:first_name, :last_name, :address, :address_2, :email, :zip, :company, :city, :user_id)
   end
 end
