@@ -4,6 +4,7 @@ class WidgetsController < ApplicationController
   layout 'widget_layout'
 
   def widget
+    @lead = Lead.new
     respond_to do |format|
       format.html do
         # load data to show in the view
