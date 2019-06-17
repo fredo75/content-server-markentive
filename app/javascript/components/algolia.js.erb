@@ -1,9 +1,10 @@
+
 function algolia () {
 
-  // var envAppId = "<%= ENV['ALGOLIA_ID'] %>";
-  // var envApiKey = "<%= ENV['ALGOLIA_AP_KEY'] %>";
-  var envAppId = "pl2WBQ5IQ5YB";
-  var envApiKey = "32f513307ec1b6927f0ad3fc3cfff192";
+const db = require('dotenv').config()
+
+  envAppId = process.env.ALGOLIA_ID;
+  envApiKey = process.env.ALGOLIA_AP_KEY;
 
   var placesAutocomplete = places({
     appId: envAppId,
