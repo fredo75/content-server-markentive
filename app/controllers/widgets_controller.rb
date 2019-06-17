@@ -1,5 +1,5 @@
 class WidgetsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, :authenticate_user!
   after_action :allow_iframe
   layout 'widget_layout'
 

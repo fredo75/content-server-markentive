@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'rb-readline'
 gem 'faker'
+gem 'rest-client'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

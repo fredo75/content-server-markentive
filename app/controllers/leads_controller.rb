@@ -1,3 +1,7 @@
+require 'rest-client'
+
+
+
 class LeadsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
  skip_before_action :verify_authenticity_token
@@ -45,6 +49,100 @@ end
     # @lead.user_id = 1
     @lead.user_id = params[:user_id]
     @lead.save
+
+
+
+    # @lead.each do |elem|
+
+      # next if elem[:email].nil? || (elem[:email] == " ")
+      def hubspot_post
+
+
+      url_user = 'https://api.hsforms.com/submissions/v3/integration/submit/5187319/1072b70c-a9b7-41ef-8a50-4dc62698cc52'
+      @response = RestClient.post url_user,
+      {
+    "fields": [
+      {
+        "name": "firstname",
+        "value": @lead.first_name
+      },
+      {
+        "name": "lastname",
+        "value": @lead.last_name
+      },
+      {
+        "name": "email",
+        "value": @lead.email
+      },
+      {
+        "name": "city",
+        "value": @lead.city
+      },
+      {
+        "name": "company",
+        "value": @lead.company
+      },
+      {
+        "name": "zip",
+        "value": @lead.zip
+      },
+      {
+        "name": "address",
+        "value": @lead.address
+      }
+    ],
+
+      "legalConsentOptions":{
+        "consent":{
+          "consentToProcess":true,
+          "text":"I agree to allow Example Company to store and process my personal data.",
+          "communications":[
+            {
+              "value":true,
+              "subscriptionTypeId":999,
+              "text":"I agree to receive marketing communications from Example Company."
+            }
+          ]
+        }
+      }
+  }.to_json, {content_type: :json, accept: :json}
+
+      end
+      # end
+
+
+
+    # {
+
+    #   "fields": [
+    #     {
+    #       "name": "email",
+    #       "value": "frefre@example.com"
+    #     },
+    #     {
+    #       "name": "firstname",
+    #       "value": "fefre"
+    #     },
+    #     {
+    #       "name": "lastname",
+    #       "value": "dodo"
+    #     }
+    #   ],
+
+    #   "legalConsentOptions":{
+    #     "consent":{
+    #       "consentToProcess":true,
+    #       "text":"I agree to allow Example Company to store and process my personal data.",
+    #       "communications":[
+    #         {
+    #           "value":true,
+    #           "subscriptionTypeId":999,
+    #           "text":"I agree to receive marketing communications from Example Company."
+    #         }
+    #       ]
+    #     }
+    #   }
+    # }
 
 
     # Unless @lead.valid?, #save will return false,
