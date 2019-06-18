@@ -20,7 +20,7 @@
 </div>
 
 <div class="rgpd_container">
-  <%= f.input :rgpd, :as => :boolean, label: false%>
+  <%= f.input :rgpd, :as => :boolean, label: false %>
   <p class="rgpd">
     J'autorise Markentive à m'envoyer du contenu marketing. Chaque email comporte un lien pour gérer / supprimer mes données et préférences email.
   </p>
@@ -29,7 +29,7 @@
   </P>
 </div>
 
-<%= f.button :submit, class:'btn btn-warning', label: false%>
+<%= f.button :submit, "ENVOYER", class:'btn btn-warning'%>
 <%# f.association :user %>
 <%= hidden_field_tag(:user_id, 1) %>
 <%= f.hidden_field :user_id, :value => params[:user_id] %>
