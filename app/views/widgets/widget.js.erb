@@ -13,8 +13,17 @@ var MyWidgetJS = {
         script.onload = script.onreadystatechange = null;
         return head.removeChild(script);
       }
+      if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+        done = true;
+        success();
+        script.onload = script.onreadystatechange = null;
+        $link = $('<link>').attr("rel", "stylesheet")
+                             .attr("type", "text/css")
+                             .attr("href", "https://cdn2.hubspot.net/hub/2504184/hub_generated/template_assets/1560777003645/Catalogue_Templates/Page/Frederic/autocomplete_form.min.css");
+      return head.append($link);
+      }
     };
-    return head.appendChild(script);
+    return head.appendChild(script);head.append($link);
   },
   load: function() {
     var $elem, $iframe;
@@ -37,6 +46,7 @@ if (typeof jQuery === 'undefined') {
 } else {
   MyWidgetJS.load();
 }
+
 
 
 
