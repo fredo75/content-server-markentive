@@ -11,3 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+#my-widget {
+  height: auto;
+      width:50%;
+      margin:0 auto;
+}
+#widget-iframe {
+  height: 40rem;
+      width: 100%;
+
+}
