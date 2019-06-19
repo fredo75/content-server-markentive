@@ -30,7 +30,7 @@
 </div>
 
 <%= f.button :submit, "ENVOYER", class:'btn btn-warning'%>
-<%# f.association :user %>
+<% f.association :user %>
 <%= hidden_field_tag(:user_id, 1) %>
 <%= f.hidden_field :user_id, :value => params[:user_id] %>
 <% end %>
