@@ -49,7 +49,7 @@ end
     # @lead.user_id = 1
     @lead.user_id = params[:user_id]
     @lead.save
-    render "leads/result_submit"
+    render template: "leads/result_submit", layout: false
 
 
     # @lead.each do |elem|
