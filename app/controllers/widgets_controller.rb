@@ -2,7 +2,7 @@ class WidgetsController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate_user!
   after_action :allow_iframe
   # layout 'widget_layout', only: [:widget]
-  layout 'widget_layout_2', only: [:widget_2]
+  # layout 'widget_layout_2', only: [:widget_2]
 
   def widget
     @lead = Lead.new
@@ -10,7 +10,7 @@ class WidgetsController < ApplicationController
       format.html do
         # load data to show in the view
         # @data = ...
-        render :widget
+        render :widget, :layout => 'widget_layout'
       end
       format.js do
         render :widget
@@ -24,7 +24,7 @@ class WidgetsController < ApplicationController
       format.html do
         # load data to show in the view
         # @data = ...
-        render :widget_2
+        render :widget_2, :layout => 'widget_layout_2'
       end
       format.js do
         render :widget_2
