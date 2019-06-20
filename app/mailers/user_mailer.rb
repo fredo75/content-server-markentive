@@ -12,8 +12,7 @@ def welcome(lead)
 
     mail(
       :subject => 'Hello from Postmark',
-      # :to  => @lead_email,
-      :to  => 'frederic.curier@markentive.com',
+      :to  => @lead_email,
       :from => 'frederic.curier@markentive.com',
       :html_body => '<strong>Hello</strong> dear Postmark user.',
       :track_opens => 'true')
