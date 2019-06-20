@@ -1,7 +1,7 @@
 <%= simple_form_for @lead, html: { method: :post, class: :'form' } do |f| %>
-<%= f.input :first_name, class:'form-control', placeholder: 'First name', label: false, required: false %>
-<%= f.input :last_name, class:'form-control', placeholder: 'Last name', label: false, required: false %>
-<%= f.input :email, class:'form-control', placeholder: 'Email', label: false, required: false %>
+<%= f.input :first_name, class:'form-control', placeholder: '* First name', label: false, required: true %>
+<%= f.input :last_name, class:'form-control', placeholder: '* Last name', label: false, required: true %>
+<%= f.input :email, class:'form-control', placeholder: '* Email', label: false, required: true %>
 <%= f.input :company, class:'form-control', placeholder: 'Company', label: false, required: false  %>
 <div class="form-group form-address">
   <%= f.input :address, class:'form-control', placeholder: 'Address', label: false, required: false %>
