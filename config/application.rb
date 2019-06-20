@@ -21,6 +21,6 @@ module ContentServerMarkentive
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { :api_token => "3b15d21e-f143-416e-9b95-7de91f69dd27" }
+    config.action_mailer.postmark_settings = { :api_token => "b8cb4873-5cb4-4400-8b79-4ab7651a08cc" }
   end
 end
