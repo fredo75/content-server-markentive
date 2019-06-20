@@ -48,6 +48,7 @@ end
     @lead = Lead.new(lead_params)
     # @lead.user_id = 1
     @lead.user_id = params[:user_id]
+    params[:lead][:rgpd] == "1" ? @lead.rgpd = true : @lead.rgpd = false
     @lead.save
     render template: "leads/result_submit", layout: false
 
