@@ -5,7 +5,8 @@ require 'rest-client'
 class LeadsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
  skip_before_action :verify_authenticity_token, :authenticate_user!
-  after_action :allow_iframe
+ after_action :allow_iframe
+ # after_create :send_welcome_email
   # layout 'widget_layout'
 
 def index
@@ -51,6 +52,9 @@ end
     params[:lead][:rgpd] == "1" ? @lead.rgpd = true : @lead.rgpd = false
     @lead.save
     render template: "leads/result_submit", layout: false
+    # email = @lead
+    UserMailer.welcome(@lead).deliver_now
+
 
 
     # @lead.each do |elem|
@@ -156,6 +160,11 @@ end
 
   def allow_iframe
     response.headers.except! 'X-Frame-Options'
+  end
+
+
+  def send_welcome_email
+    UserMailer.welcome.deliver_now
   end
 
   def lead_params
