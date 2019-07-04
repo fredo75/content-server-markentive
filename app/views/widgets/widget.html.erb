@@ -3,6 +3,10 @@
 <%= f.input :last_name, class:'form-control', placeholder: '* Last name', label: false, required: true %>
 <%= f.input :email, class:'form-control', placeholder: '* Email', label: false, required: true %>
 <%= f.input :company, class:'form-control', placeholder: 'Company', label: false, required: false  %>
+<ul id="results">
+
+</ul>
+
 <div class="form-group form-address">
   <%= f.input :address, class:'form-control', placeholder: 'Address', label: false, required: false %>
 </div>
@@ -36,3 +40,36 @@
 <% end %>
 
 <%= javascript_pack_tag 'application' %>
+
+<!--  <div id="container">
+    <input type="text" id="search">
+
+  </div> -->
+<!-- <script>
+
+const input = document.querySelector('#lead_company');
+const results = document.querySelector('#results');
+
+const drawResponseList = (data) => {
+  results.innerHTML = '';
+  data.etablissements.forEach((word) => {
+    results.insertAdjacentHTML('beforeend', `<li>${word}</li>`);
+  });
+};
+
+const autocomplete = (e) => {
+  fetch(`https://entreprise.data.gouv.fr/api/sirene/v1/full_text/${e.target.value}`)
+    .then(response => response.json())
+    .then(data => drawResponseList(data));
+};
+
+input.addEventListener('keyup', autocomplete);
+</script> -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="localhost:3000/jquery.tokeninput.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#lead_company").tokenInput("https://entreprise.data.gouv.fr/api/sirene/v1/full_text/");
+});
+</script>
+
