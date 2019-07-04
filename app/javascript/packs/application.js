@@ -1,9 +1,9 @@
 import "bootstrap";
 
-// import{algolia} from '../components/algolia.js';
-//  if (document.getElementById('my-widget')){
-//   algolia();
-//  }
+import{algolia} from '../components/algolia.js';
+ if (document.getElementById('my-widget')){
+  algolia();
+ }
 import{societeinfo} from '../components/societeinfo.js.erb';
 
 // import{company} from '../components/societeinfo.js';
